@@ -6,6 +6,8 @@ import mongoose, { Document, Schema } from "mongoose";
 import {
   DELIVERY_MODE,
   DELIVERY_MODE_VALUES,
+  ROLES,
+  ROLES_VALUES,
   TWO_FACTOR_TYPE,
   TWO_FACTOR_TYPE_VALUES,
 } from "../Enums";
@@ -25,6 +27,7 @@ export type IUser = {
       secret: string;
     };
   };
+  role: string;
 };
 
 export type UserDoc = IUser & Document;
@@ -68,6 +71,11 @@ const UserSchema: Schema = new Schema(
     refreshToken: { type: String },
     details: NestedSchema,
     settings: Settings,
+    role: {
+      type: String,
+      enum: ROLES_VALUES,
+      default: ROLES.USER,
+    },
   },
   { timestamps: true }
 );

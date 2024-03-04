@@ -36,6 +36,7 @@ export class LoginController extends Controller {
             id: user._id,
             email: user.email,
             name: user.name,
+            role: user?.role,
           }),
         },
         res
