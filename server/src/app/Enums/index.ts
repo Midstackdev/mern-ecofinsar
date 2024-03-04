@@ -17,3 +17,13 @@ export enum TWO_FACTOR_TYPE {
   "TXT" = "TXT",
 }
 export const TWO_FACTOR_TYPE_VALUES = Object.values(TWO_FACTOR_TYPE);
+
+export enum ROLES {
+  ADMIN = "ADMIN",
+  MANAGER = "MANAGER",
+  EMPLOYEE = "EMPLOYEE",
+  USER = "USER",
+  GUEST = "ANONYMOUS",
+  MODERATOR = "MODERATOR",
+}
+export const ROLES_VALUES = Object.values(ROLES);
