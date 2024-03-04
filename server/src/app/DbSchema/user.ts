@@ -17,6 +17,12 @@ export type IUser = {
   email: string;
   emailVerifiedAt: Date;
   refreshToken?: string;
+  city?: string;
+  state?: string;
+  country?: string;
+  occupation?: string;
+  phoneNumber?: string;
+  transactions?: [];
   settings: {
     twoFactor: {
       enabled: boolean;
@@ -68,6 +74,12 @@ const UserSchema: Schema = new Schema(
     refreshToken: { type: String },
     details: NestedSchema,
     settings: Settings,
+    city: { type: String },
+    state: { type: String },
+    country: { type: String },
+    occupation: { type: String },
+    phoneNumber: { type: String },
+    transactions: { type: Array },
   },
   { timestamps: true }
 );
