@@ -13,6 +13,10 @@ export class BaseModel {
     return this.mongooseModel.create(document);
   }
 
+  insertMany<T>(documents: any[]): Promise<T[]> {
+    return this.mongooseModel.insertMany(documents);
+  }
+
   find<T>(populate?: IPopulate): Promise<T[]> {
     return populate
       ? this.mongooseModel.find().populate(populate).exec()

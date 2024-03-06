@@ -48,7 +48,7 @@ export class UserController extends Controller {
       log.info(`getting user with id: ${req.params.id}`);
       const user = await User.findOne({ _id: req.params.id });
 
-      return super.jsonRes(new UserResource(user), res);
+      return super.jsonRes(user, res);
     } catch (error) {
       return next(error);
     }

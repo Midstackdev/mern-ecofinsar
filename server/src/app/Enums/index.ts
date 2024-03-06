@@ -19,10 +19,10 @@ export enum TWO_FACTOR_TYPE {
 export const TWO_FACTOR_TYPE_VALUES = Object.values(TWO_FACTOR_TYPE);
 
 export enum ROLES {
-  ADMIN = "ADMIN",
-  MANAGER = "MANAGER",
+  ADMIN = "superadmin",
+  MANAGER = "admin",
   EMPLOYEE = "EMPLOYEE",
-  USER = "USER",
+  USER = "user",
   GUEST = "ANONYMOUS",
   MODERATOR = "MODERATOR",
 }
