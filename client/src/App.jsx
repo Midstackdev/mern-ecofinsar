@@ -1,4 +1,5 @@
 import { CssBaseline, ThemeProvider, createTheme } from "@mui/material";
+import Customers from "pages/customers";
 import DashBoard from "pages/dashboard";
 import Layout from "pages/layout";
 import Products from "pages/products";
@@ -20,6 +21,7 @@ const App = () => {
               <Route path="/" element={<Navigate to="/dashboard" replace />} />
               <Route path="/dashboard" element={<DashBoard />} />
               <Route path="/products" element={<Products />} />
+              <Route path="/customers" element={<Customers />} />
             </Route>
           </Routes>
         </ThemeProvider>

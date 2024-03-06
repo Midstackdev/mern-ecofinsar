@@ -1,6 +1,7 @@
 import { NextFunction, Request, Response } from "express";
 import Controller from "../../libs/routing/Controller";
 import { ProductStat } from "../../Models/ProductStat";
+import { User } from "../../Models/User";
 
 export class ClientController extends Controller {
   public constructor() {
@@ -46,6 +47,16 @@ export class ClientController extends Controller {
       ]);
 
       super.jsonRes(productWithStats, res);
+    } catch (error) {
+      return next(error);
+    }
+  }
+
+  public async getCustomers(req: Request, res: Response, next: NextFunction) {
+    try {
+      const customers = await User.findMany({ role: "user" }, "-password");
+
+      super.jsonRes(customers, res);
     } catch (error) {
       return next(error);
     }
