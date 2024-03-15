@@ -7,5 +7,6 @@ const controller: ClientController = new ClientController();
 
 router.get("/products", controller.getProducts);
 router.get("/customers", controller.getCustomers);
+router.get("/transactions", controller.getTransactions);
 
 export default router;

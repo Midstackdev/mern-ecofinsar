@@ -2,6 +2,7 @@ import { NextFunction, Request, Response } from "express";
 import Controller from "../../libs/routing/Controller";
 import { ProductStat } from "../../Models/ProductStat";
 import { User } from "../../Models/User";
+import { Transaction } from "../../Models/Transaction";
 
 export class ClientController extends Controller {
   public constructor() {
@@ -57,6 +58,51 @@ export class ClientController extends Controller {
       const customers = await User.findMany({ role: "user" }, "-password");
 
       super.jsonRes(customers, res);
+    } catch (error) {
+      return next(error);
+    }
+  }
+
+  public async getTransactions(
+    req: Request,
+    res: Response,
+    next: NextFunction
+  ) {
+    try {
+      const { page = 1, pageSize = 20, sort = null, search = "" } = req.query;
+
+      const generateSort = () => {
+        const sortParsed = JSON.parse(sort as string);
+        const sortFormatted = {
+          [sortParsed.field]: (sortParsed.sort = "asc" ? 1 : -1),
+        };
+
+        return sortFormatted;
+      };
+
+      const sortFormatted = Boolean(sort) ? generateSort() : {};
+
+      const where = {
+        $or: [
+          { cost: { $regex: new RegExp(search as string, "i") } },
+          // { userId: { $regex: new RegExp(search as string, "i") } },
+        ],
+      };
+      const skip = (page as number) * (pageSize as number);
+
+      const transactions = await Transaction.getTransactions({
+        where,
+        sort: sortFormatted,
+        skip,
+        limit: pageSize,
+      });
+
+      const total = await Transaction.count({
+        // name: { $regex: search, $options: "i" },
+        ...where,
+      });
+
+      super.jsonRes({ transactions, total }, res);
     } catch (error) {
       return next(error);
     }

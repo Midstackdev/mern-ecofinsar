@@ -67,4 +67,10 @@ export class BaseModel {
   deleteById<T>(id: string): Promise<T> {
     return this.mongooseModel.findByIdAndDelete(id).exec();
   }
+
+  count(query?: any): Promise<number> {
+    return query
+      ? this.mongooseModel.countDocuments(query)
+      : this.mongooseModel.estimatedDocumentCount();
+  }
 }

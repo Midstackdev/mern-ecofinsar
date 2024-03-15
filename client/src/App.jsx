@@ -3,6 +3,7 @@ import Customers from "pages/customers";
 import DashBoard from "pages/dashboard";
 import Layout from "pages/layout";
 import Products from "pages/products";
+import Transactions from "pages/transaction";
 import { useMemo } from "react";
 import { useSelector } from "react-redux";
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
@@ -22,6 +23,7 @@ const App = () => {
               <Route path="/dashboard" element={<DashBoard />} />
               <Route path="/products" element={<Products />} />
               <Route path="/customers" element={<Customers />} />
+              <Route path="/transactions" element={<Transactions />} />
             </Route>
           </Routes>
         </ThemeProvider>
