@@ -3,6 +3,8 @@ import Controller from "../../libs/routing/Controller";
 import { ProductStat } from "../../Models/ProductStat";
 import { User } from "../../Models/User";
 import { Transaction } from "../../Models/Transaction";
+import { getCountryISO3 } from "ts-country-iso-2-to-3";
+import { IUser } from "../../DbSchema/user";
 
 export class ClientController extends Controller {
   public constructor() {
@@ -103,6 +105,39 @@ export class ClientController extends Controller {
       });
 
       super.jsonRes({ transactions, total }, res);
+    } catch (error) {
+      return next(error);
+    }
+  }
+
+  public async getGeography(req: Request, res: Response, next: NextFunction) {
+    try {
+      const customers: IUser[] = await User.findMany(
+        { role: "user" },
+        "-password"
+      );
+
+      const mappedLocations = customers.reduce((acc: any, { country }) => {
+        const countryISO3 = getCountryISO3(country as string);
+        if (!acc[countryISO3]) {
+          acc[countryISO3] = 0;
+        }
+        acc[countryISO3]++;
+        return acc;
+      }, {});
+
+      // console.log("---fff---", Object.entries(mappedLocations));
+
+      const formattedLocations = Object.entries(mappedLocations).map(
+        ([country, count]) => {
+          return {
+            id: country,
+            value: count,
+          };
+        }
+      );
+
+      super.jsonRes(formattedLocations, res);
     } catch (error) {
       return next(error);
     }

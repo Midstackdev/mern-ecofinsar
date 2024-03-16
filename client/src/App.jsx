@@ -1,6 +1,7 @@
 import { CssBaseline, ThemeProvider, createTheme } from "@mui/material";
 import Customers from "pages/customers";
 import DashBoard from "pages/dashboard";
+import Geography from "pages/geography";
 import Layout from "pages/layout";
 import Products from "pages/products";
 import Transactions from "pages/transaction";
@@ -24,6 +25,7 @@ const App = () => {
               <Route path="/products" element={<Products />} />
               <Route path="/customers" element={<Customers />} />
               <Route path="/transactions" element={<Transactions />} />
+              <Route path="/geography" element={<Geography />} />
             </Route>
           </Routes>
         </ThemeProvider>
