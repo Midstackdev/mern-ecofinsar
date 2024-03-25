@@ -1,8 +1,10 @@
 import { CssBaseline, ThemeProvider, createTheme } from "@mui/material";
 import Customers from "pages/customers";
+import Daily from "pages/daily";
 import DashBoard from "pages/dashboard";
 import Geography from "pages/geography";
 import Layout from "pages/layout";
+import Overview from "pages/overview";
 import Products from "pages/products";
 import Transactions from "pages/transaction";
 import { useMemo } from "react";
@@ -26,6 +28,8 @@ const App = () => {
               <Route path="/customers" element={<Customers />} />
               <Route path="/transactions" element={<Transactions />} />
               <Route path="/geography" element={<Geography />} />
+              <Route path="/overview" element={<Overview />} />
+              <Route path="/daily" element={<Daily />} />
             </Route>
           </Routes>
         </ThemeProvider>

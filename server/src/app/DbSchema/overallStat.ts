@@ -3,40 +3,34 @@
  */
 
 import mongoose, { Document, Schema } from "mongoose";
+import { DailylyData, MonthlyData } from "./productStat";
 
-type Common = {
-  totalSales: number;
-  totalUnits: number;
-};
-
-export type MonthlyData = { month: string } & Common;
-export type DailylyData = { date: string } & Common;
-
-export type IProductStat = {
+export type IOverallStat = {
   _id?: string;
-  productId: string;
-  yearlySalesTotal: number;
+  totalCustomers: number;
   yearlyTotalSoldUnits: number;
   year: number;
   monthlyData: MonthlyData[];
   dailyData: DailylyData[];
+  salesByCategory: {};
 };
 
-export type ProductStatDoc = IProductStat & Document;
+export type OverallStatDoc = IOverallStat & Document;
 
 /*
  * Create the schmema that will reflect the MongoDB collection
  */
-const ProductStatSchema: Schema = new Schema(
+const OverallStatSchema: Schema = new Schema(
   {
-    productId: { type: mongoose.Schema.Types.ObjectId, ref: "Product" },
+    totalCustomers: { type: Number },
     yearlySalesTotal: { type: Number },
     yearlyTotalSoldUnits: { type: Number },
     year: { type: Number },
     monthlyData: [{ month: String, totalSales: Number, totalUnits: Number }],
     dailyData: [{ date: String, totalSales: Number, totalUnits: Number }],
+    salesByCategory: { type: Map, of: Number },
   },
   { timestamps: true }
 );
 
-export default mongoose.model<ProductStatDoc>("ProductStat", ProductStatSchema);
+export default mongoose.model<OverallStatDoc>("OverallStat", OverallStatSchema);

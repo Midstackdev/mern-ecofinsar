@@ -1,10 +1,10 @@
 import { Router } from "express";
-// import { HomeController } from "../Http/Controllers/Home";
+import { SaleController } from "../Http/Controllers/Sale";
 
 const router = Router();
 
-// const controller: HomeController = new HomeController();
+const controller: SaleController = new SaleController();
 
-// router.get("/", controller.index);
+router.get("/", controller.index);
 
 export default router;
