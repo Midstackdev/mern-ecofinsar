@@ -1,4 +1,5 @@
 import { CssBaseline, ThemeProvider, createTheme } from "@mui/material";
+import Admin from "pages/admin";
 import Breakdown from "pages/breakdown";
 import Customers from "pages/customers";
 import Daily from "pages/daily";
@@ -34,6 +35,7 @@ const App = () => {
               <Route path="/daily" element={<Daily />} />
               <Route path="/monthly" element={<Monthly />} />
               <Route path="/breakdown" element={<Breakdown />} />
+              <Route path="/admin" element={<Admin />} />
             </Route>
           </Routes>
         </ThemeProvider>
