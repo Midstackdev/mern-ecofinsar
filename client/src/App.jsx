@@ -1,9 +1,11 @@
 import { CssBaseline, ThemeProvider, createTheme } from "@mui/material";
+import Breakdown from "pages/breakdown";
 import Customers from "pages/customers";
 import Daily from "pages/daily";
 import DashBoard from "pages/dashboard";
 import Geography from "pages/geography";
 import Layout from "pages/layout";
+import Monthly from "pages/monthly";
 import Overview from "pages/overview";
 import Products from "pages/products";
 import Transactions from "pages/transaction";
@@ -30,6 +32,8 @@ const App = () => {
               <Route path="/geography" element={<Geography />} />
               <Route path="/overview" element={<Overview />} />
               <Route path="/daily" element={<Daily />} />
+              <Route path="/monthly" element={<Monthly />} />
+              <Route path="/breakdown" element={<Breakdown />} />
             </Route>
           </Routes>
         </ThemeProvider>
