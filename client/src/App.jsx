@@ -8,6 +8,7 @@ import Geography from "pages/geography";
 import Layout from "pages/layout";
 import Monthly from "pages/monthly";
 import Overview from "pages/overview";
+import Performance from "pages/performance";
 import Products from "pages/products";
 import Transactions from "pages/transaction";
 import { useMemo } from "react";
@@ -36,6 +37,7 @@ const App = () => {
               <Route path="/monthly" element={<Monthly />} />
               <Route path="/breakdown" element={<Breakdown />} />
               <Route path="/admin" element={<Admin />} />
+              <Route path="/performance" element={<Performance />} />
             </Route>
           </Routes>
         </ThemeProvider>

@@ -11,6 +11,7 @@ export const api = createApi({
     "Geography",
     "Sales",
     "Admins",
+    "Performance",
   ],
   //   prepareHeaders: (headers, { getState }) => {
   //     headers.set("x-api-key", `YOUR-KEY-HERE`);
@@ -51,6 +52,10 @@ export const api = createApi({
       query: () => `management`,
       providesTags: ["Admins"],
     }),
+    getUserPerformance: build.query({
+      query: (id) => `management/performance/${id}`,
+      providesTags: ["Performance"],
+    }),
   }),
 });
 
@@ -62,4 +67,5 @@ export const {
   useGetGeographyQuery,
   useGetSalesQuery,
   useGetAdminsQuery,
+  useGetUserPerformanceQuery,
 } = api;
