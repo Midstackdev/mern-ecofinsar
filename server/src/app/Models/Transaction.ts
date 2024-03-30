@@ -20,6 +20,10 @@ export class TransactionModel extends BaseModel {
       .skip(skip)
       .limit(limit);
   }
+
+  getLatest() {
+    return TransactionSchema.find({}).limit(50).sort({ createdAt: -1 });
+  }
 }
 
 export const Transaction = new TransactionModel();

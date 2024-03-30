@@ -9,6 +9,7 @@ export type IOverallStat = {
   _id?: string;
   totalCustomers: number;
   yearlyTotalSoldUnits: number;
+  yearlySalesTotal: number;
   year: number;
   monthlyData: MonthlyData[];
   dailyData: DailylyData[];

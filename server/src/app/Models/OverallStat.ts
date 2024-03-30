@@ -13,6 +13,10 @@ export class OverallStatModel extends BaseModel {
   constructor() {
     super(OverallStatSchema);
   }
+
+  all({ query }: Record<string, any>) {
+    return OverallStatSchema.find({ ...query });
+  }
 }
 
 export const OverallStat = new OverallStatModel();
